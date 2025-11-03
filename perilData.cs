@@ -76,7 +76,7 @@ namespace kperil
         {
             this.rateOfSpreadMagnitudeRaster = rateOfSpreadMagnitude;
             this.rateOfSpreadDirectionRaster = rateOfSpreadDirection;
-        
+
             totalX = this.rateOfSpreadMagnitudeRaster.Length;
             totalY = this.rateOfSpreadMagnitudeRaster[0].Length;
 
@@ -139,6 +139,8 @@ namespace kperil
         {
             if (raster.Length != this.totalX || raster[0].Length != this.totalY) throw new Exception($"Error: raster size mismatch");
         }
+
+        //todo: verify all raster values have been imported.
         private void interpolateSlope()
         {
             if (elevationRaster == null)
@@ -237,5 +239,37 @@ namespace kperil
             }
             return jaggedArray;
         }
+        // Verifies that all required input rasters are imported and correctly sized.
+        public void VerifyAllRastersImported()
+        {
+            if (totalX <= 0 || totalY <= 0)
+            {
+                throw new InvalidOperationException("Raster dimensions are not initialized.");
+            }
+
+            var missingKinds = new System.Collections.Generic.List<string>();
+
+            // Fire: ROS magnitude + direction
+            if (rateOfSpreadMagnitudeRaster == null || rateOfSpreadDirectionRaster == null) missingKinds.Add("Fire");
+
+            // Weather: wind magnitude + direction
+            if (windMagnitudeRaster == null || windDirectionRaster == null) missingKinds.Add("Weather");
+
+            // Elevation (base topo)
+            if (elevationRaster == null) missingKinds.Add("Elevation");
+
+            // Topography derivatives (slope/aspect) normally computed from elevation
+            if (slopeRaster == null || aspectRaster == null) missingKinds.Add("Topography");
+
+            // WUI layer
+            if (wuiAreaRaster == null) missingKinds.Add("WUI");
+
+            if (missingKinds.Count > 0)
+            {
+                throw new InvalidOperationException($"Missing raster inputs: {string.Join(", ", missingKinds)}");
+            }
+        }
     }
 }
+
+
