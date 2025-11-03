@@ -19,6 +19,7 @@ namespace kPERIL {
             kPERIL.perilData.importTopographyRastersByFileName(@"D:\nPERIL\kPERIL\files\elevation.asc");
             kPERIL.perilData.importWeatherRastersByFileName(@"D:\nPERIL\kPERIL\files\windMagnitude.asc", @"D:\nPERIL\kPERIL\files\windDirection.asc");
             
+
             var brokenDownROS = kPERIL.breakdownRateOfSpread();
             var travelTime = kPERIL.getTravelTimeFromBrokenDownRos(brokenDownROS);
             var result = kPERIL.getTriggerBoundary(travelTime, aset);

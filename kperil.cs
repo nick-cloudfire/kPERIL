@@ -16,6 +16,8 @@ namespace kPERIL
 
         public float[][][] breakdownRateOfSpread()
         {
+            perilData.VerifyAllRastersImported();
+
             int width = perilData.totalX;
             int height = perilData.totalY;
 
