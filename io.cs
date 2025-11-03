@@ -4,6 +4,7 @@ using System.IO;
 using OSGeo.GDAL;
 using OSGeo.OGR;
 using OSGeo.OSR;
+using System.Globalization;
 
 namespace kperil
 {
@@ -11,6 +12,8 @@ namespace kperil
     {
         public static float[][] ReadRaster(string fileLocation)
         {
+            if (!IsValidInputFile(fileLocation)) throw new FileNotFoundException($"File {fileLocation} could not be loaded", fileLocation);
+            
             string filetype = Path.GetExtension(fileLocation).ToLower();
 
             if (filetype == ".asc")
@@ -27,6 +30,21 @@ namespace kperil
             }
         }
 
+        private static bool IsValidInputFile(string filePath)
+        {
+            if (string.IsNullOrWhiteSpace(filePath))
+            {
+                throw new ArgumentException("File path cannot be null or whitespace.", nameof(filePath));
+            }
+
+            if (!File.Exists(filePath))
+            {
+                return false;
+            }
+
+            FileAttributes attributes = File.GetAttributes(filePath);
+            return !attributes.HasFlag(FileAttributes.Directory);
+        }
         private static float[][] ReadAsciiGrid(string filePath)
         {
             string[] lines = File.ReadAllLines(filePath);
@@ -162,8 +180,8 @@ namespace kperil
                 Console.Error.WriteLine($"Warning: failed to copy PRJ file: {ex.Message}");
             }
         }
-        
-    
+
+
         private static void WriteGeoTiff(float[][] raster, string parentFile, string outputFileName)
         {
             if (raster == null || raster.Length == 0 || raster[0] == null)
@@ -238,6 +256,105 @@ namespace kperil
 
             // Optional: overviews for faster display
             // dst.BuildOverviews("NEAREST", new int[] { 2, 4, 8, 16 });
+        }
+        
+
+        public readonly struct RasterMetadata
+        {
+            public float CellSize { get; init; }
+            public float NoDataValue { get; init; }
+            public float XllCorner { get; init; }
+            public float YllCorner { get; init; }
+        }
+
+        public static RasterMetadata GetRasterMetadata(string fileLocation)
+        {
+            if (!IsValidInputFile(fileLocation))
+            {
+                throw new FileNotFoundException($"File '{fileLocation}' could not be loaded.", fileLocation);
+            }
+
+            string extension = Path.GetExtension(fileLocation).ToLowerInvariant();
+            switch (extension)
+            {
+                case ".asc":
+                    return ReadAsciiMetadata(fileLocation);
+                case ".tif":
+                case ".tiff":
+                    return ReadGeoTiffMetadata(fileLocation);
+                default:
+                    throw new NotSupportedException(
+                        $"File type {extension} is not a recognised raster format [.asc, .tif, .tiff].");
+            }
+        }
+
+        private static RasterMetadata ReadAsciiMetadata(string filePath)
+        {
+            using var reader = new StreamReader(filePath);
+            string? ncolsLine = reader.ReadLine();
+            string? nrowsLine = reader.ReadLine();
+            string? xllLine = reader.ReadLine();
+            string? yllLine = reader.ReadLine();
+            string? cellSizeLine = reader.ReadLine();
+            string? noDataLine = reader.ReadLine();
+
+            if (xllLine == null || yllLine == null || cellSizeLine == null)
+            {
+                throw new InvalidDataException("ASCII grid header is incomplete.");
+            }
+
+            float ParseHeaderValue(string line)
+            {
+                string[] parts = line.Split((char[])null!, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length < 2)
+                {
+                    throw new InvalidDataException($"Malformed header line: '{line}'.");
+                }
+                return float.Parse(parts[1], CultureInfo.InvariantCulture);
+            }
+
+            return new RasterMetadata
+            {
+                CellSize = ParseHeaderValue(cellSizeLine),
+                XllCorner = ParseHeaderValue(xllLine),
+                YllCorner = ParseHeaderValue(yllLine),
+                NoDataValue = noDataLine != null
+                    ? ParseHeaderValue(noDataLine)
+                    : float.NaN
+            };
+        }
+
+        private static RasterMetadata ReadGeoTiffMetadata(string filePath)
+        {
+            Gdal.AllRegister();
+
+            using Dataset dataset = Gdal.Open(filePath, Access.GA_ReadOnly)
+                ?? throw new InvalidOperationException($"Failed to open GeoTIFF: {filePath}");
+
+            double[] geoTransform = new double[6];
+            dataset.GetGeoTransform(geoTransform);
+
+            double cellSizeX = geoTransform[1];
+            double cellSizeY = Math.Abs(geoTransform[5]);
+            double cellSizeScalar = Math.Abs(cellSizeX) < 1e-9 || Math.Abs(cellSizeX - cellSizeY) > 1e-6
+                ? Math.Sqrt(cellSizeX * cellSizeX + cellSizeY * cellSizeY) / Math.Sqrt(2.0)
+                : Math.Abs(cellSizeX);
+
+            float cellSize = (float)cellSizeScalar;
+            float xllCorner = (float)geoTransform[0];
+            float yllCorner = (float)(geoTransform[3] + geoTransform[5] * dataset.RasterYSize);
+
+            Band band = dataset.GetRasterBand(1);
+            band.GetNoDataValue(out double nodataValue, out int hasNoData);
+            float nodata = hasNoData != 0 ? (float)nodataValue : float.NaN;
+
+            return new RasterMetadata
+            {
+                CellSize = cellSize,
+                XllCorner = xllCorner,
+                YllCorner = yllCorner,
+                NoDataValue = nodata
+            };
         }
     }
 }
