@@ -2,21 +2,19 @@ namespace kperil
 {
     public class perilData
     {
-        public float[][] rateOfSpreadMagnitudeRaster { get; set; }
-        private float[][] windMagnitudeRaster { get; set; }
-        public float[][] rateOfSpreadDirectionRaster { get; set; }
-        private float[][] windDirectionRaster { get; set; }
-        private float[][] elevationRaster { get; set; }
-        private float[][] slopeRaster { get; set; }
-        private float[][] aspectRaster { get; set; }
+        public float[][] rateOfSpreadMagnitudeRaster;
+        public float[][] windMagnitudeRaster;
+        public float[][] rateOfSpreadDirectionRaster;
+        public float[][] windDirectionRaster;
+        public float[][] elevationRaster;
+        public float[][] slopeRaster;
+        public float[][] aspectRaster;
         public float[][] effectiveMidflameWindspeed;
         public float[][] wuiAreaRaster;
-        private float aset { get; set; }
         public float cellSize;
         public float noDataValue;
-        private float _xllCorner;
-        private float _yllCorner;
-
+        public float xllCorner;
+        public float yllCorner;
         public int totalX;
         public int totalY;
 
@@ -33,8 +31,8 @@ namespace kperil
             var metadata = perilInputOutput.GetRasterMetadata(rateOfSpreadMagnitudeFile);
             cellSize = metadata.CellSize;
             noDataValue = metadata.NoDataValue;
-            _xllCorner = metadata.XllCorner;
-            _yllCorner = metadata.YllCorner;
+            xllCorner = metadata.XllCorner;
+            yllCorner = metadata.YllCorner;
         }
 
         public void importWeatherRastersByFileName(string windMagnitudeFile, string windDirectionFile)
