@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace kperil
 {
-    class perilInputOutput
+    public class perilInputOutput
     {
         public static float[][] ReadRaster(string fileLocation)
         {

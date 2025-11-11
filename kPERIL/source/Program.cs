@@ -1,15 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using kperil;
-using OSGeo.GDAL;
 
 namespace kPERIL {
 
     public class Program {
         public static void Main(string[] args)
         {
-            GdalConfiguration.ConfigureGdal();
-            Gdal.AllRegister();
-
             kPERIL kPERIL = new kPERIL();
 
             float aset = 8;

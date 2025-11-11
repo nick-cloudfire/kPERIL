@@ -1,7 +1,5 @@
-using System.Runtime.ExceptionServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml.Linq;
 using kperil;
+using OSGeo.GDAL;
 
 namespace kPERIL
 {
@@ -12,6 +10,7 @@ namespace kPERIL
         public kPERIL()
         {
             this.perilData = new perilData();
+            Gdal.AllRegister();
         }
 
         public float[][][] breakdownRateOfSpread()
