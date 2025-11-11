@@ -10,7 +10,7 @@ namespace kperil
 {
     public class perilInputOutput
     {
-        public static float[][] ReadRaster(string fileLocation)
+        public static float[,] ReadRaster(string fileLocation)
         {
             if (!IsValidInputFile(fileLocation)) throw new FileNotFoundException($"File {fileLocation} could not be loaded", fileLocation);
             
@@ -45,7 +45,7 @@ namespace kperil
             FileAttributes attributes = File.GetAttributes(filePath);
             return !attributes.HasFlag(FileAttributes.Directory);
         }
-        private static float[][] ReadAsciiGrid(string filePath)
+        private static float[,] ReadAsciiGrid(string filePath)
         {
             string[] lines = File.ReadAllLines(filePath);
             int headerLines = 6; // typically: ncols, nrows, xllcorner, yllcorner, cellsize, NODATA_value
@@ -53,19 +53,27 @@ namespace kperil
             // Read header
             int ncols = int.Parse(lines[0].Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries)[1]);
             int nrows = int.Parse(lines[1].Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries)[1]);
-            float[][] data = new float[nrows][];
+            float[,] data = new float[nrows,ncols];
 
             // Read data
-            for (int i = 0; i < nrows; i++)
-            {
-                string[] parts = lines[i + headerLines].Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                data[i] = Array.ConvertAll(parts, float.Parse);
-            }
+            for (int row = 0; row < nrows; row++)
+                {
+                    // ASCII grid starts at the top row
+                    string[] parts = lines[row + headerLines]
+                        .Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
 
+                    if (parts.Length != ncols)
+                        throw new FormatException($"Line {row + headerLines} has {parts.Length} columns, expected {ncols}.");
+
+                    for (int col = 0; col < ncols; col++)
+                    {
+                        data[row, col] = float.Parse(parts[col], System.Globalization.CultureInfo.InvariantCulture);
+                    }
+                }
             return data;
         }
 
-        private static float[][] ReadGeoTiff(string filePath)
+        private static float[,] ReadGeoTiff(string filePath)
         {
             Gdal.AllRegister();
 
@@ -82,18 +90,20 @@ namespace kperil
                 band.ReadRaster(0, 0, width, height, buffer, width, height, 0, 0);
 
                 // Convert to jagged array
-                float[][] data = new float[height][];
+                float[,] data = new float[height, width];
                 for (int y = 0; y < height; y++)
                 {
-                    data[y] = new float[width];
-                    Array.Copy(buffer, y * width, data[y], 0, width);
+                    for (int x = 0; x < width; x++)
+                    {
+                        data[y, x] = buffer[y * width + x];
+                    }
                 }
 
                 return data;
             }
         }
 
-        public static void WriteRasterByCopy(float[][] raster, string parentFile, string outputFileName)
+        public static void WriteRasterByCopy(float[,] raster, string parentFile, string outputFileName)
         {
             string filetype = Path.GetExtension(parentFile).ToLower();
 
@@ -111,7 +121,7 @@ namespace kperil
             }
         }
 
-        private static void WriteAsciiGrid(float[][] raster, string parentFile, string outputFileName)
+        private static void WriteAsciiGrid(float[,] raster, string parentFile, string outputFileName)
         {
             string[] lines = File.ReadAllLines(parentFile);
             //int headerLines = 6; // typically: ncols, nrows, xllcorner, yllcorner, cellsize, NODATA_value
@@ -125,8 +135,8 @@ namespace kperil
             int NODATA_value = int.Parse(lines[5].Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries)[1]);
 
             // --- Validate dimensions ---
-            if (raster.Length != nrows || raster[0].Length != ncols)
-                throw new Exception($"Input raster dimensions ({raster.Length}x{raster[0].Length}) do not match parent ({nrows}x{ncols}).");
+            if (raster.GetLength(0) != nrows || raster.GetLength(1) != ncols)
+                throw new Exception($"Input raster dimensions ({raster.GetLength(0)}x{raster.GetLength(1)}) do not match parent ({nrows}x{ncols}).");
 
             using (var sw = new StreamWriter(outputFileName))
             {
@@ -140,9 +150,13 @@ namespace kperil
                 // Write raster data (top row first, ESRI ASCII convention)
                 for (int r = 0; r < nrows; r++)
                 {
-                    string line = string.Join(" ", raster[r].Select(v =>
-                        v.ToString("G9", System.Globalization.CultureInfo.InvariantCulture)
-                    ));
+                    string[] parts = new string[ncols];
+                    for (int c = 0; c < ncols; c++)
+                    {
+                        parts[c] = raster[r, c].ToString("G9", System.Globalization.CultureInfo.InvariantCulture);
+                    }
+
+                    string line = string.Join(" ", parts);
                     sw.WriteLine(line);
                 }
 
@@ -182,9 +196,9 @@ namespace kperil
         }
 
 
-        private static void WriteGeoTiff(float[][] raster, string parentFile, string outputFileName)
+        private static void WriteGeoTiff(float[,] raster, string parentFile, string outputFileName)
         {
-            if (raster == null || raster.Length == 0 || raster[0] == null)
+            if (raster == null || raster.GetLength(0) == 0 || raster.GetLength(1) == 0)
                 throw new ArgumentException("Input raster is null or empty.");
 
             // Initialize GDAL
@@ -198,8 +212,8 @@ namespace kperil
             int rows = src.RasterYSize;
 
             // Validate dimensions
-            if (rows != raster.Length || cols != raster[0].Length)
-                throw new Exception($"Input raster dimensions ({raster.Length}x{raster[0].Length}) do not match parent ({rows}x{cols}).");
+            if (rows != raster.GetLength(0) || cols != raster.GetLength(1))
+                throw new Exception($"Input raster dimensions ({raster.GetLength(0)}x{raster.GetLength(1)}) do not match parent ({rows}x{cols}).");
 
             // Copy georeference
             double[] gt = new double[6];
@@ -239,13 +253,11 @@ namespace kperil
             int idx = 0;
             for (int r = 0; r < rows; r++)
             {
-                if (raster[r].Length != cols)
-                    throw new Exception($"Row {r} has incorrect length {raster[r].Length} (expected {cols}).");
-
-                Array.Copy(raster[r], 0, buffer, idx, cols);
-                idx += cols;
+                for (int c = 0; c < cols; c++)
+                {
+                    buffer[idx++] = raster[r, c];
+                }
             }
-
             // Write raster
             CPLErr err = dstBand.WriteRaster(0, 0, cols, rows, buffer, cols, rows, 0, 0);
             if (err != CPLErr.CE_None)

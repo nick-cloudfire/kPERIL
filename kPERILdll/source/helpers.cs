@@ -26,6 +26,19 @@ namespace kperil
             return result;
         }
 
+        public static float[,] Copy2D_Fast(float[,] source)
+        {
+            int rows = source.GetLength(0);
+            int cols = source.GetLength(1);
+            float[,] dest = new float[rows, cols];
+
+            int bytes = sizeof(float) * rows * cols;
+            Buffer.BlockCopy(source, 0, dest, 0, bytes);
+
+            return dest;
+        }
+
+
         public static float[][] CopyJagged(float[][] src)
         {
             var copy = new float[src.Length][];
