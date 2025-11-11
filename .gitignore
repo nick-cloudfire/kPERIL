@@ -1,356 +1,428 @@
-.vscode/settings.json
-bin/Debug/net8.0/win-x64/gdal_csharp.dll
-bin/Debug/net8.0/win-x64/gdalconst_csharp.dll
-bin/Debug/net8.0/win-x64/kPERIL.deps.json
-bin/Debug/net8.0/win-x64/kPERIL.dll
-bin/Debug/net8.0/win-x64/kPERIL.exe
-bin/Debug/net8.0/win-x64/kPERIL.pdb
-bin/Debug/net8.0/win-x64/kPERIL.runtimeconfig.json
-bin/Debug/net8.0/win-x64/ogr_csharp.dll
-bin/Debug/net8.0/win-x64/osr_csharp.dll
-bin/Debug/net8.0/win-x64/gdal/curl-ca-bundle.crt
-bin/Debug/net8.0/win-x64/gdal/GDALLicense.rtf
-bin/Debug/net8.0/win-x64/gdal/GISInternalsLicense.rtf
-bin/Debug/net8.0/win-x64/gdal/license.txt
-bin/Debug/net8.0/win-x64/gdal/data/bag_template.xml
-bin/Debug/net8.0/win-x64/gdal/data/cubewerx_extra.wkt
-bin/Debug/net8.0/win-x64/gdal/data/default.rsc
-bin/Debug/net8.0/win-x64/gdal/data/ecw_cs.wkt
-bin/Debug/net8.0/win-x64/gdal/data/eedaconf.json
-bin/Debug/net8.0/win-x64/gdal/data/epsg.wkt
-bin/Debug/net8.0/win-x64/gdal/data/esri_StatePlane_extra.wkt
-bin/Debug/net8.0/win-x64/gdal/data/gdal_algorithm.schema.json
-bin/Debug/net8.0/win-x64/gdal/data/gdalg.schema.json
-bin/Debug/net8.0/win-x64/gdal/data/gdalicon.png
-bin/Debug/net8.0/win-x64/gdal/data/gdalinfo_output.schema.json
-bin/Debug/net8.0/win-x64/gdal/data/GDALLogoBW.svg
-bin/Debug/net8.0/win-x64/gdal/data/GDALLogoColor.svg
-bin/Debug/net8.0/win-x64/gdal/data/GDALLogoGS.svg
-bin/Debug/net8.0/win-x64/gdal/data/gdalmdiminfo_output.schema.json
-bin/Debug/net8.0/win-x64/gdal/data/gdaltileindex.xsd
-bin/Debug/net8.0/win-x64/gdal/data/gdalvrt.xsd
-bin/Debug/net8.0/win-x64/gdal/data/gfs.xsd
-bin/Debug/net8.0/win-x64/gdal/data/gml_registry.xml
-bin/Debug/net8.0/win-x64/gdal/data/gml_registry.xsd
-bin/Debug/net8.0/win-x64/gdal/data/gmlasconf.xml
-bin/Debug/net8.0/win-x64/gdal/data/gmlasconf.xsd
-bin/Debug/net8.0/win-x64/gdal/data/grib2_center.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_process.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_subcenter.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_0.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_1.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_2.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_3.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_4.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_5.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_6.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_7.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_13.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_14.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_15.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_16.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_17.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_18.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_19.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_20.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_21.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_190.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_0_191.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_1_0.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_1_1.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_1_2.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_2_0.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_2_3.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_2_4.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_2_5.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_2_6.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_3_0.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_3_1.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_3_2.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_3_3.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_3_4.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_3_5.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_3_6.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_0.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_1.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_2.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_3.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_4.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_5.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_6.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_7.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_8.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_9.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_4_10.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_10_0.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_10_1.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_10_2.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_10_3.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_10_4.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_10_191.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_20_0.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_20_1.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_20_2.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_local_Canada.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_local_HPC.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_local_index.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_local_MRMS.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_local_NCEP.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_2_local_NDFD.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_4_5.csv
-bin/Debug/net8.0/win-x64/gdal/data/grib2_table_versions.csv
-bin/Debug/net8.0/win-x64/gdal/data/gt_datum.csv
-bin/Debug/net8.0/win-x64/gdal/data/gt_ellips.csv
-bin/Debug/net8.0/win-x64/gdal/data/header.dxf
-bin/Debug/net8.0/win-x64/gdal/data/inspire_cp_BasicPropertyUnit.gfs
-bin/Debug/net8.0/win-x64/gdal/data/inspire_cp_CadastralBoundary.gfs
-bin/Debug/net8.0/win-x64/gdal/data/inspire_cp_CadastralParcel.gfs
-bin/Debug/net8.0/win-x64/gdal/data/inspire_cp_CadastralZoning.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_AdmArea.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_AdmBdry.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_AdmPt.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_BldA.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_BldL.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_Cntr.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_CommBdry.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_CommPt.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_Cstline.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_ElevPt.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_GCP.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_LeveeEdge.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_RailCL.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_RdArea.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_RdASL.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_RdCompt.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_RdEdg.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_RdMgtBdry.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_RdSgmtA.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_RvrMgtBdry.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_SBAPt.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_SBArea.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_SBBdry.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_WA.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_WL.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_WStrA.gfs
-bin/Debug/net8.0/win-x64/gdal/data/jpfgdgml_WStrL.gfs
-bin/Debug/net8.0/win-x64/gdal/data/leaflet_template.html
-bin/Debug/net8.0/win-x64/gdal/data/LICENSE.TXT
-bin/Debug/net8.0/win-x64/gdal/data/MM_m_idofic.csv
-bin/Debug/net8.0/win-x64/gdal/data/netcdf_config.xsd
-bin/Debug/net8.0/win-x64/gdal/data/nitf_spec.xml
-bin/Debug/net8.0/win-x64/gdal/data/nitf_spec.xsd
-bin/Debug/net8.0/win-x64/gdal/data/ogr_fields_override.schema.json
-bin/Debug/net8.0/win-x64/gdal/data/ogrinfo_output.schema.json
-bin/Debug/net8.0/win-x64/gdal/data/ogrvrt.xsd
-bin/Debug/net8.0/win-x64/gdal/data/osmconf.ini
-bin/Debug/net8.0/win-x64/gdal/data/ozi_datum.csv
-bin/Debug/net8.0/win-x64/gdal/data/ozi_ellips.csv
-bin/Debug/net8.0/win-x64/gdal/data/pci_datum.txt
-bin/Debug/net8.0/win-x64/gdal/data/pci_ellips.txt
-bin/Debug/net8.0/win-x64/gdal/data/pdfcomposition.xsd
-bin/Debug/net8.0/win-x64/gdal/data/pds4_template.xml
-bin/Debug/net8.0/win-x64/gdal/data/plscenesconf.json
-bin/Debug/net8.0/win-x64/gdal/data/ruian_vf_ob_v1.gfs
-bin/Debug/net8.0/win-x64/gdal/data/ruian_vf_st_uvoh_v1.gfs
-bin/Debug/net8.0/win-x64/gdal/data/ruian_vf_st_v1.gfs
-bin/Debug/net8.0/win-x64/gdal/data/ruian_vf_v1.gfs
-bin/Debug/net8.0/win-x64/gdal/data/s57agencies.csv
-bin/Debug/net8.0/win-x64/gdal/data/s57attributes.csv
-bin/Debug/net8.0/win-x64/gdal/data/s57expectedinput.csv
-bin/Debug/net8.0/win-x64/gdal/data/s57objectclasses.csv
-bin/Debug/net8.0/win-x64/gdal/data/seed_2d.dgn
-bin/Debug/net8.0/win-x64/gdal/data/seed_3d.dgn
-bin/Debug/net8.0/win-x64/gdal/data/stateplane.csv
-bin/Debug/net8.0/win-x64/gdal/data/template_tiles.mapml
-bin/Debug/net8.0/win-x64/gdal/data/tms_LINZAntarticaMapTileGrid.json
-bin/Debug/net8.0/win-x64/gdal/data/tms_MapML_APSTILE.json
-bin/Debug/net8.0/win-x64/gdal/data/tms_MapML_CBMTILE.json
-bin/Debug/net8.0/win-x64/gdal/data/tms_NZTM2000.json
-bin/Debug/net8.0/win-x64/gdal/data/trailer.dxf
-bin/Debug/net8.0/win-x64/gdal/data/vdv452.xml
-bin/Debug/net8.0/win-x64/gdal/data/vdv452.xsd
-bin/Debug/net8.0/win-x64/gdal/data/vicar.json
-bin/Debug/net8.0/win-x64/gdal/share/CH
-bin/Debug/net8.0/win-x64/gdal/share/deformation_model.schema.json
-bin/Debug/net8.0/win-x64/gdal/share/GL27
-bin/Debug/net8.0/win-x64/gdal/share/ITRF2000
-bin/Debug/net8.0/win-x64/gdal/share/ITRF2008
-bin/Debug/net8.0/win-x64/gdal/share/ITRF2014
-bin/Debug/net8.0/win-x64/gdal/share/ITRF2020
-bin/Debug/net8.0/win-x64/gdal/share/nad.lst
-bin/Debug/net8.0/win-x64/gdal/share/nad27
-bin/Debug/net8.0/win-x64/gdal/share/nad83
-bin/Debug/net8.0/win-x64/gdal/share/other.extra
-bin/Debug/net8.0/win-x64/gdal/share/proj.db
-bin/Debug/net8.0/win-x64/gdal/share/proj.ini
-bin/Debug/net8.0/win-x64/gdal/share/projjson.schema.json
-bin/Debug/net8.0/win-x64/gdal/share/triangulation.schema.json
-bin/Debug/net8.0/win-x64/gdal/share/world
-bin/Debug/net8.0/win-x64/gdal/x64/adrg.dll
-bin/Debug/net8.0/win-x64/gdal/x64/concrt140.dll
-bin/Debug/net8.0/win-x64/gdal/x64/freexl.dll
-bin/Debug/net8.0/win-x64/gdal/x64/gdal_wrap.dll
-bin/Debug/net8.0/win-x64/gdal/x64/gdal.dll
-bin/Debug/net8.0/win-x64/gdal/x64/gdalconst_wrap.dll
-bin/Debug/net8.0/win-x64/gdal/x64/geos_c.dll
-bin/Debug/net8.0/win-x64/gdal/x64/geos.dll
-bin/Debug/net8.0/win-x64/gdal/x64/iconv-2.dll
-bin/Debug/net8.0/win-x64/gdal/x64/libcrypto-3-x64.dll
-bin/Debug/net8.0/win-x64/gdal/x64/libcurl.dll
-bin/Debug/net8.0/win-x64/gdal/x64/libexpat.dll
-bin/Debug/net8.0/win-x64/gdal/x64/libmysql.dll
-bin/Debug/net8.0/win-x64/gdal/x64/libpng16.dll
-bin/Debug/net8.0/win-x64/gdal/x64/libpq.dll
-bin/Debug/net8.0/win-x64/gdal/x64/librttopo.dll
-bin/Debug/net8.0/win-x64/gdal/x64/libssl-3-x64.dll
-bin/Debug/net8.0/win-x64/gdal/x64/libxml2.dll
-bin/Debug/net8.0/win-x64/gdal/x64/msvcp140_1.dll
-bin/Debug/net8.0/win-x64/gdal/x64/msvcp140_2.dll
-bin/Debug/net8.0/win-x64/gdal/x64/msvcp140.dll
-bin/Debug/net8.0/win-x64/gdal/x64/ogdi.dll
-bin/Debug/net8.0/win-x64/gdal/x64/ogr_wrap.dll
-bin/Debug/net8.0/win-x64/gdal/x64/openjp2.dll
-bin/Debug/net8.0/win-x64/gdal/x64/osr_wrap.dll
-bin/Debug/net8.0/win-x64/gdal/x64/pcre.dll
-bin/Debug/net8.0/win-x64/gdal/x64/proj_9.dll
-bin/Debug/net8.0/win-x64/gdal/x64/remote.dll
-bin/Debug/net8.0/win-x64/gdal/x64/rpf.dll
-bin/Debug/net8.0/win-x64/gdal/x64/skeleton.dll
-bin/Debug/net8.0/win-x64/gdal/x64/spatialite.dll
-bin/Debug/net8.0/win-x64/gdal/x64/sqlite3.dll
-bin/Debug/net8.0/win-x64/gdal/x64/tiff.dll
-bin/Debug/net8.0/win-x64/gdal/x64/vcruntime140_1.dll
-bin/Debug/net8.0/win-x64/gdal/x64/vcruntime140.dll
-bin/Debug/net8.0/win-x64/gdal/x64/vrf.dll
-bin/Debug/net8.0/win-x64/gdal/x64/xerces-c_3_2.dll
-bin/Debug/net8.0/win-x64/gdal/x64/zlib.dll
-bin/Debug/net8.0/win-x64/gdal/x64/zstd.dll
-bin/Debug/net8.0/win-x64/gdal/x86/adrg.dll
-bin/Debug/net8.0/win-x64/gdal/x86/concrt140.dll
-bin/Debug/net8.0/win-x64/gdal/x86/freexl.dll
-bin/Debug/net8.0/win-x64/gdal/x86/gdal_wrap.dll
-bin/Debug/net8.0/win-x64/gdal/x86/gdal.dll
-bin/Debug/net8.0/win-x64/gdal/x86/gdalconst_wrap.dll
-bin/Debug/net8.0/win-x64/gdal/x86/geos_c.dll
-bin/Debug/net8.0/win-x64/gdal/x86/geos.dll
-bin/Debug/net8.0/win-x64/gdal/x86/iconv-2.dll
-bin/Debug/net8.0/win-x64/gdal/x86/libcrypto-3.dll
-bin/Debug/net8.0/win-x64/gdal/x86/libcurl.dll
-bin/Debug/net8.0/win-x64/gdal/x86/libexpat.dll
-bin/Debug/net8.0/win-x64/gdal/x86/libmysql.dll
-bin/Debug/net8.0/win-x64/gdal/x86/libpng16.dll
-bin/Debug/net8.0/win-x64/gdal/x86/libpq.dll
-bin/Debug/net8.0/win-x64/gdal/x86/librttopo.dll
-bin/Debug/net8.0/win-x64/gdal/x86/libssl-3.dll
-bin/Debug/net8.0/win-x64/gdal/x86/libxml2.dll
-bin/Debug/net8.0/win-x64/gdal/x86/msvcp140_1.dll
-bin/Debug/net8.0/win-x64/gdal/x86/msvcp140_2.dll
-bin/Debug/net8.0/win-x64/gdal/x86/msvcp140.dll
-bin/Debug/net8.0/win-x64/gdal/x86/ogdi.dll
-bin/Debug/net8.0/win-x64/gdal/x86/ogr_wrap.dll
-bin/Debug/net8.0/win-x64/gdal/x86/openjp2.dll
-bin/Debug/net8.0/win-x64/gdal/x86/osr_wrap.dll
-bin/Debug/net8.0/win-x64/gdal/x86/pcre.dll
-bin/Debug/net8.0/win-x64/gdal/x86/proj_9.dll
-bin/Debug/net8.0/win-x64/gdal/x86/remote.dll
-bin/Debug/net8.0/win-x64/gdal/x86/rpf.dll
-bin/Debug/net8.0/win-x64/gdal/x86/skeleton.dll
-bin/Debug/net8.0/win-x64/gdal/x86/spatialite.dll
-bin/Debug/net8.0/win-x64/gdal/x86/sqlite3.dll
-bin/Debug/net8.0/win-x64/gdal/x86/tiff.dll
-bin/Debug/net8.0/win-x64/gdal/x86/vcruntime140.dll
-bin/Debug/net8.0/win-x64/gdal/x86/vrf.dll
-bin/Debug/net8.0/win-x64/gdal/x86/xerces-c_3_2.dll
-bin/Debug/net8.0/win-x64/gdal/x86/zlib.dll
-bin/Debug/net8.0/win-x64/gdal/x86/zstd.dll
-bin/Debug/net9.0/gdal_csharp.dll
-bin/Debug/net9.0/gdalconst_csharp.dll
-bin/Debug/net9.0/kPERIL.deps.json
-bin/Debug/net9.0/kPERIL.dll
-bin/Debug/net9.0/kPERIL.exe
-bin/Debug/net9.0/kPERIL.pdb
-bin/Debug/net9.0/kPERIL.runtimeconfig.json
-bin/Debug/net9.0/MaxRev.Gdal.Core.dll
-bin/Debug/net9.0/MaxRev.Gdal.WindowsRuntime.Minimal.dll
-bin/Debug/net9.0/ogr_csharp.dll
-bin/Debug/net9.0/osr_csharp.dll
-bin/Debug/net9.0/runtimes/win-x64/native/gdal_wrap.dll
-bin/Debug/net9.0/runtimes/win-x64/native/gdal300.dll
-bin/Debug/net9.0/runtimes/win-x64/native/gdalconst_wrap.dll
-bin/Debug/net9.0/runtimes/win-x64/native/libcurl.dll
-bin/Debug/net9.0/runtimes/win-x64/native/libgeos_c.dll
-bin/Debug/net9.0/runtimes/win-x64/native/libgeos.dll
-bin/Debug/net9.0/runtimes/win-x64/native/ogr_wrap.dll
-bin/Debug/net9.0/runtimes/win-x64/native/osr_wrap.dll
-bin/Debug/net9.0/runtimes/win-x64/native/sqlite3.dll
-bin/Debug/net9.0/win-x64/gdal_wrap.dll
-bin/Debug/net9.0/win-x64/Gdal.Core.dll
-bin/Debug/net9.0/win-x64/gdal300.dll
-bin/Debug/net9.0/win-x64/gdalconst_wrap.dll
-bin/Debug/net9.0/win-x64/kPERIL.deps.json
-bin/Debug/net9.0/win-x64/kPERIL.dll
-bin/Debug/net9.0/win-x64/kPERIL.exe
-bin/Debug/net9.0/win-x64/kPERIL.pdb
-bin/Debug/net9.0/win-x64/kPERIL.runtimeconfig.json
-bin/Debug/net9.0/win-x64/libcurl.dll
-bin/Debug/net9.0/win-x64/libgeos_c.dll
-bin/Debug/net9.0/win-x64/libgeos.dll
-bin/Debug/net9.0/win-x64/MaxRev.Gdal.Core.dll
-bin/Debug/net9.0/win-x64/MaxRev.Gdal.WindowsRuntime.Minimal.dll
-bin/Debug/net9.0/win-x64/ogr_wrap.dll
-bin/Debug/net9.0/win-x64/osr_wrap.dll
-bin/Debug/net9.0/win-x64/sqlite3.dll
-obj/kPERIL.csproj.nuget.dgspec.json
-obj/kPERIL.csproj.nuget.g.props
-obj/kPERIL.csproj.nuget.g.targets
-obj/project.assets.json
-obj/project.nuget.cache
-obj/Debug/net8.0/win-x64/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
-obj/Debug/net8.0/win-x64/apphost.exe
-obj/Debug/net8.0/win-x64/kPERIL.AssemblyInfo.cs
-obj/Debug/net8.0/win-x64/kPERIL.AssemblyInfoInputs.cache
-obj/Debug/net8.0/win-x64/kPERIL.assets.cache
-obj/Debug/net8.0/win-x64/kPERIL.csproj.AssemblyReference.cache
-obj/Debug/net8.0/win-x64/kPERIL.csproj.CoreCompileInputs.cache
-obj/Debug/net8.0/win-x64/kPERIL.csproj.FileListAbsolute.txt
-obj/Debug/net8.0/win-x64/kPERIL.csproj.Up2Date
-obj/Debug/net8.0/win-x64/kPERIL.dll
-obj/Debug/net8.0/win-x64/kPERIL.GeneratedMSBuildEditorConfig.editorconfig
-obj/Debug/net8.0/win-x64/kPERIL.genruntimeconfig.cache
-obj/Debug/net8.0/win-x64/kPERIL.GlobalUsings.g.cs
-obj/Debug/net8.0/win-x64/kPERIL.pdb
-obj/Debug/net8.0/win-x64/NuGet/CB8A5E4C6BCD91AFAFD5E9584BF46AEFD1DAC727/GDAL/3.11.3/GdalConfiguration.cs
-obj/Debug/net8.0/win-x64/ref/kPERIL.dll
-obj/Debug/net8.0/win-x64/refint/kPERIL.dll
-obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
-obj/Debug/net9.0/apphost.exe
-obj/Debug/net9.0/kPERIL.AssemblyInfo.cs
-obj/Debug/net9.0/kPERIL.AssemblyInfoInputs.cache
-obj/Debug/net9.0/kPERIL.assets.cache
-obj/Debug/net9.0/kPERIL.csproj.AssemblyReference.cache
-obj/Debug/net9.0/kPERIL.csproj.CoreCompileInputs.cache
-obj/Debug/net9.0/kPERIL.csproj.FileListAbsolute.txt
-obj/Debug/net9.0/kPERIL.csproj.Up2Date
-obj/Debug/net9.0/kPERIL.dll
-obj/Debug/net9.0/kPERIL.GeneratedMSBuildEditorConfig.editorconfig
-obj/Debug/net9.0/kPERIL.genruntimeconfig.cache
-obj/Debug/net9.0/kPERIL.GlobalUsings.g.cs
-obj/Debug/net9.0/kPERIL.pdb
-obj/Debug/net9.0/ref/kPERIL.dll
-obj/Debug/net9.0/refint/kPERIL.dll
-obj/Debug/net9.0/win-x64/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
-obj/Debug/net9.0/win-x64/apphost.exe
-obj/Debug/net9.0/win-x64/kPERIL.AssemblyInfo.cs
-obj/Debug/net9.0/win-x64/kPERIL.AssemblyInfoInputs.cache
-obj/Debug/net9.0/win-x64/kPERIL.assets.cache
-obj/Debug/net9.0/win-x64/kPERIL.csproj.AssemblyReference.cache
-obj/Debug/net9.0/win-x64/kPERIL.csproj.CoreCompileInputs.cache
-obj/Debug/net9.0/win-x64/kPERIL.csproj.FileListAbsolute.txt
-obj/Debug/net9.0/win-x64/kPERIL.csproj.Up2Date
-obj/Debug/net9.0/win-x64/kPERIL.dll
-obj/Debug/net9.0/win-x64/kPERIL.GeneratedMSBuildEditorConfig.editorconfig
-obj/Debug/net9.0/win-x64/kPERIL.genruntimeconfig.cache
-obj/Debug/net9.0/win-x64/kPERIL.GlobalUsings.g.cs
-obj/Debug/net9.0/win-x64/kPERIL.pdb
-obj/Debug/net9.0/win-x64/ref/kPERIL.dll
-obj/Debug/net9.0/win-x64/refint/kPERIL.dll
+## Ignore Visual Studio temporary files, build results, and
+## files generated by popular Visual Studio add-ons.
+##
+## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.env
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto generated files
+mono_crash.*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+
+[Dd]ebug/x64/
+[Dd]ebugPublic/x64/
+[Rr]elease/x64/
+[Rr]eleases/x64/
+bin/x64/
+obj/x64/
+
+[Dd]ebug/x86/
+[Dd]ebugPublic/x86/
+[Rr]elease/x86/
+[Rr]eleases/x86/
+bin/x86/
+obj/x86/
+
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Aa][Rr][Mm]64[Ee][Cc]/
+bld/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+
+# Build results on 'Bin' directories
+**/[Bb]in/*
+# Uncomment if you have tasks that rely on *.refresh files to move binaries
+# (https://github.com/github/gitignore/pull/3736)
+#!**/[Bb]in/*.refresh
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+# Uncomment if you have tasks that create the project's static files in wwwroot
+#wwwroot/
+
+# Visual Studio 2017 auto generated files
+Generated\ Files/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# Approval Tests result files
+*.received.*
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# Benchmark Results
+BenchmarkDotNet.Artifacts/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.idb
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+# but not Directory.Build.rsp, as it configures directory-level build defaults
+!Directory.Build.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Chutzpah Test files
+_Chutzpah*
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio Trace Files
+*.e2e
+
+# TFS 2012 Local Workspace
+$tf/
+
+# Guidance Automation Toolkit
+*.gpState
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# TeamCity is a build add-in
+_TeamCity*
+
+# DotCover is a Code Coverage Tool
+*.dotCover
+
+# AxoCover is a Code Coverage Tool
+.axoCover/*
+!.axoCover/settings.json
+
+# Coverlet is a free, cross platform Code Coverage Tool
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# Visual Studio code coverage results
+*.coverage
+*.coveragexml
+
+# NCrunch
+_NCrunch_*
+.NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# MightyMoose
+*.mm.*
+AutoTest.Net/
+
+# Web workbench (sass)
+.sass-cache/
+
+# Installshield output folder
+[Ee]xpress/
+
+# DocProject is a documentation generator add-in
+DocProject/buildhelp/
+DocProject/Help/*.HxT
+DocProject/Help/*.HxC
+DocProject/Help/*.hhc
+DocProject/Help/*.hhk
+DocProject/Help/*.hhp
+DocProject/Help/Html2
+DocProject/Help/html
+
+# Click-Once directory
+publish/
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+# Note: Comment the next line if you want to checkin your web deploy settings,
+# but database connection strings (with potential passwords) will be unencrypted
+*.pubxml
+*.publishproj
+
+# Microsoft Azure Web App publish settings. Comment the next line if you want to
+# checkin your Azure Web App publish settings, but sensitive information contained
+# in these scripts will be unencrypted
+PublishScripts/
+
+# NuGet Packages
+*.nupkg
+# NuGet Symbol Packages
+*.snupkg
+# The packages folder can be ignored because of Package Restore
+**/[Pp]ackages/*
+# except build/, which is used as an MSBuild target.
+!**/[Pp]ackages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/[Pp]ackages/repositories.config
+# NuGet v3's project.json files produces more ignorable files
+*.nuget.props
+*.nuget.targets
+
+# Microsoft Azure Build Output
+csx/
+*.build.csdef
+
+# Microsoft Azure Emulator
+ecf/
+rcf/
+
+# Windows Store app package directories and files
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+*.appx
+*.appxbundle
+*.appxupload
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+!?*.[Cc]ache/
+
+# Others
+ClientBin/
+~$*
+*~
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+
+# Including strong name files can present a security risk
+# (https://github.com/github/gitignore/pull/2483#issue-259490424)
+#*.snk
+
+# Since there are multiple workflows, uncomment next line to ignore bower_components
+# (https://github.com/github/gitignore/pull/1529#issuecomment-104372622)
+#bower_components/
+
+# RIA/Silverlight projects
+Generated_Code/
+
+# Backup & report files from converting an old project file
+# to a newer Visual Studio version. Backup files are not needed,
+# because we have git ;-)
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+ServiceFabricBackup/
+*.rptproj.bak
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Business Intelligence projects
+*.rdl.data
+*.bim.layout
+*.bim_*.settings
+*.rptproj.rsuser
+*- [Bb]ackup.rdl
+*- [Bb]ackup ([0-9]).rdl
+*- [Bb]ackup ([0-9][0-9]).rdl
+
+# Microsoft Fakes
+FakesAssemblies/
+
+# GhostDoc plugin setting file
+*.GhostDoc.xml
+
+# Node.js Tools for Visual Studio
+.ntvs_analysis.dat
+node_modules/
+
+# Visual Studio 6 build log
+*.plg
+
+# Visual Studio 6 workspace options file
+*.opt
+
+# Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
+*.vbw
+
+# Visual Studio 6 workspace and project file (working project files containing files to include in project)
+*.dsw
+*.dsp
+
+# Visual Studio 6 technical files
+*.ncb
+*.aps
+
+# Visual Studio LightSwitch build output
+**/*.HTMLClient/GeneratedArtifacts
+**/*.DesktopClient/GeneratedArtifacts
+**/*.DesktopClient/ModelManifest.xml
+**/*.Server/GeneratedArtifacts
+**/*.Server/ModelManifest.xml
+_Pvt_Extensions
+
+# Paket dependency manager
+**/.paket/paket.exe
+paket-files/
+
+# FAKE - F# Make
+**/.fake/
+
+# CodeRush personal settings
+**/.cr/personal
+
+# Python Tools for Visual Studio (PTVS)
+**/__pycache__/
+*.pyc
+
+# Cake - Uncomment if you are using it
+#tools/**
+#!tools/packages.config
+
+# Tabs Studio
+*.tss
+
+# Telerik's JustMock configuration file
+*.jmconfig
+
+# BizTalk build output
+*.btp.cs
+*.btm.cs
+*.odx.cs
+*.xsd.cs
+
+# OpenCover UI analysis results
+OpenCover/
+
+# Azure Stream Analytics local run output
+ASALocalRun/
+
+# MSBuild Binary and Structured Log
+*.binlog
+MSBuild_Logs/
+
+# AWS SAM Build and Temporary Artifacts folder
+.aws-sam
+
+# NVidia Nsight GPU debugger configuration file
+*.nvuser
+
+# MFractors (Xamarin productivity tool) working folder
+**/.mfractor/
+
+# Local History for Visual Studio
+**/.localhistory/
+
+# Visual Studio History (VSHistory) files
+.vshistory/
+
+# BeatPulse healthcheck temp database
+healthchecksdb
+
+# Backup folder for Package Reference Convert tool in Visual Studio 2017
+MigrationBackup/
+
+# Ionide (cross platform F# VS Code tools) working folder
+**/.ionide/
+
+# Fody - auto-generated XML schema
+FodyWeavers.xsd
+
+# VS Code files for those working on multiple tools
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# Windows Installer files from build outputs
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
