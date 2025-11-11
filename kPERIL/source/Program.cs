@@ -15,16 +15,18 @@ namespace kPERIL {
 
             float aset = 8;
 
-            kPERIL.perilData.importFireRastersByFileName(@"D:\nPERIL\kPERIL\kPERIL\files\rateOfSpreadMagnitude.asc", @"D:\nPERIL\kPERIL\kPERIL\files\rateOfSpreadDirection.asc");
-            kPERIL.perilData.importWuiRastersByFileName(@"D:\nPERIL\kPERIL\kPERIL\files\wuiArea.asc");
-            kPERIL.perilData.importTopographyRastersByFileName(@"D:\nPERIL\kPERIL\kPERIL\files\elevation.asc");
-            kPERIL.perilData.importWeatherRastersByFileName(@"D:\nPERIL\kPERIL\kPERIL\files\windMagnitude.asc", @"D:\nPERIL\kPERIL\kPERIL\files\windDirection.asc");
+            string mainFolder = @"D:\nPERIL\kPERIL\kPERIL\files\";
+
+            kPERIL.perilData.importFireRastersByFileName(mainFolder + "rateOfSpreadMagnitude.asc", mainFolder + "rateOfSpreadDirection.asc");
+            kPERIL.perilData.importWuiRastersByFileName(mainFolder + "wuiArea.asc");
+            kPERIL.perilData.importTopographyRastersByFileName(mainFolder + "elevation.asc");
+            kPERIL.perilData.importWeatherRastersByFileName(mainFolder + "windMagnitude.asc", mainFolder + "windDirection.asc");
              
             var brokenDownROS = kPERIL.breakdownRateOfSpread();
             var travelTime = kPERIL.getTravelTimeFromBrokenDownRos(brokenDownROS);
             var result = kPERIL.getTriggerBoundary(travelTime, aset);
 
-            perilInputOutput.WriteRasterByCopy(result, @"D:\nPERIL\kPERIL\kPERIL\files\elevation.asc", @"D:\nPERIL\kPERIL\kPERIL\files\output.asc");
+            perilInputOutput.WriteRasterByCopy(result, mainFolder + "elevation.asc", mainFolder + "output.asc");
         }
     }
 }
