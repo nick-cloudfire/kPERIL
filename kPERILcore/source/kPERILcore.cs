@@ -1,20 +1,27 @@
-using System.Runtime.CompilerServices;
-using kperil;
 using OSGeo.GDAL;
+using System;
+using System.Collections.Generic;
 
 namespace kPERIL
 {
-    public class kPERIL
+    public class kPERILcore
     {
         public perilData perilData;
 
-        public kPERIL()
+        public kPERILcore()
         {
             this.perilData = new perilData();
             Gdal.AllRegister();
         }
+       
+        public float[,] Run(float aset)
+        {
+            var brokenDownROS = breakdownRateOfSpread();
+            var travelTime = getTravelTimeFromBrokenDownRos(brokenDownROS);
+            return getTriggerBoundary(travelTime, aset);
+        }
 
-        public struct DirectionMagnitudes
+        public class DirectionMagnitudes
         {
             public float[] directions;
 

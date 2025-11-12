@@ -6,7 +6,7 @@ using OSGeo.OGR;
 using OSGeo.OSR;
 using System.Globalization;
 
-namespace kperil
+namespace kPERIL
 {
     public class perilInputOutput
     {
@@ -67,7 +67,7 @@ namespace kperil
 
                     for (int col = 0; col < ncols; col++)
                     {
-                        data[row, col] = float.Parse(parts[col], System.Globalization.CultureInfo.InvariantCulture);
+                        data[row, col] = float.Parse(parts[col], CultureInfo.InvariantCulture);
                     }
                 }
             return data;
@@ -142,10 +142,10 @@ namespace kperil
             {
                 sw.WriteLine($"ncols         {ncols}");
                 sw.WriteLine($"nrows         {nrows}");
-                sw.WriteLine($"xllcorner     {xllcorner.ToString(System.Globalization.CultureInfo.InvariantCulture)}");
-                sw.WriteLine($"yllcorner     {yllcorner.ToString(System.Globalization.CultureInfo.InvariantCulture)}");
-                sw.WriteLine($"cellsize      {cellsize.ToString(System.Globalization.CultureInfo.InvariantCulture)}");
-                sw.WriteLine($"NODATA_value  {NODATA_value.ToString(System.Globalization.CultureInfo.InvariantCulture)}");
+                sw.WriteLine($"xllcorner     {xllcorner.ToString(CultureInfo.InvariantCulture)}");
+                sw.WriteLine($"yllcorner     {yllcorner.ToString(CultureInfo.InvariantCulture)}");
+                sw.WriteLine($"cellsize      {cellsize.ToString(CultureInfo.InvariantCulture)}");
+                sw.WriteLine($"NODATA_value  {NODATA_value.ToString(CultureInfo.InvariantCulture)}");
 
                 // Write raster data (top row first, ESRI ASCII convention)
                 for (int r = 0; r < nrows; r++)
@@ -153,7 +153,7 @@ namespace kperil
                     string[] parts = new string[ncols];
                     for (int c = 0; c < ncols; c++)
                     {
-                        parts[c] = raster[r, c].ToString("G9", System.Globalization.CultureInfo.InvariantCulture);
+                        parts[c] = raster[r, c].ToString("G9", CultureInfo.InvariantCulture);
                     }
 
                     string line = string.Join(" ", parts);
@@ -180,7 +180,7 @@ namespace kperil
                 string outputPrj = Path.ChangeExtension(outputAscPath, ".prj");
 
                 // Ensure destination directory exists
-                string? outDir = Path.GetDirectoryName(outputPrj);
+                string outDir = Path.GetDirectoryName(outputPrj);
                 if (!string.IsNullOrEmpty(outDir) && !Directory.Exists(outDir))
                     Directory.CreateDirectory(outDir);
 
@@ -271,12 +271,12 @@ namespace kperil
         }
         
 
-        public readonly struct RasterMetadata
+        public struct RasterMetadata
         {
-            public float CellSize { get; init; }
-            public float NoDataValue { get; init; }
-            public float XllCorner { get; init; }
-            public float YllCorner { get; init; }
+            public float CellSize;
+            public float NoDataValue;
+            public float XllCorner;
+            public float YllCorner;
         }
 
         public static RasterMetadata GetRasterMetadata(string fileLocation)
@@ -303,12 +303,12 @@ namespace kperil
         private static RasterMetadata ReadAsciiMetadata(string filePath)
         {
             using var reader = new StreamReader(filePath);
-            string? ncolsLine = reader.ReadLine();
-            string? nrowsLine = reader.ReadLine();
-            string? xllLine = reader.ReadLine();
-            string? yllLine = reader.ReadLine();
-            string? cellSizeLine = reader.ReadLine();
-            string? noDataLine = reader.ReadLine();
+            string ncolsLine = reader.ReadLine();
+            string nrowsLine = reader.ReadLine();
+            string xllLine = reader.ReadLine();
+            string yllLine = reader.ReadLine();
+            string cellSizeLine = reader.ReadLine();
+            string noDataLine = reader.ReadLine();
 
             if (xllLine == null || yllLine == null || cellSizeLine == null)
             {

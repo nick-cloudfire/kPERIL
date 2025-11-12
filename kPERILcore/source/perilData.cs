@@ -1,4 +1,6 @@
-namespace kperil
+using System;
+
+namespace kPERIL
 {
     public class perilData
     {
@@ -20,13 +22,13 @@ namespace kperil
 
         public void importFireRastersByFileName(string rateOfSpreadMagnitudeFile, string rateOfSpreadDirectionFile)
         {
-            this.rateOfSpreadMagnitudeRaster = perilInputOutput.ReadRaster(rateOfSpreadMagnitudeFile);
-            this.rateOfSpreadDirectionRaster = perilInputOutput.ReadRaster(rateOfSpreadDirectionFile);
+            rateOfSpreadMagnitudeRaster = perilInputOutput.ReadRaster(rateOfSpreadMagnitudeFile);
+            rateOfSpreadDirectionRaster = perilInputOutput.ReadRaster(rateOfSpreadDirectionFile);
 
-            totalX = this.rateOfSpreadMagnitudeRaster.GetLength(0);
-            totalY = this.rateOfSpreadMagnitudeRaster.GetLength(1);
+            totalX = rateOfSpreadMagnitudeRaster.GetLength(0);
+            totalY = rateOfSpreadMagnitudeRaster.GetLength(1);
 
-            checkRasterSize(this.rateOfSpreadDirectionRaster);
+            checkRasterSize(rateOfSpreadDirectionRaster);
 
             var metadata = perilInputOutput.GetRasterMetadata(rateOfSpreadMagnitudeFile);
             cellSize = metadata.CellSize;
@@ -37,107 +39,107 @@ namespace kperil
 
         public void importWeatherRastersByFileName(string windMagnitudeFile, string windDirectionFile)
         {
-            this.windMagnitudeRaster = perilInputOutput.ReadRaster(windMagnitudeFile);
-            this.windDirectionRaster = perilInputOutput.ReadRaster(windDirectionFile);
+            windMagnitudeRaster = perilInputOutput.ReadRaster(windMagnitudeFile);
+            windDirectionRaster = perilInputOutput.ReadRaster(windDirectionFile);
 
-            checkRasterSize(this.windMagnitudeRaster);
-            checkRasterSize(this.windDirectionRaster);
+            checkRasterSize(windMagnitudeRaster);
+            checkRasterSize(windDirectionRaster);
 
             GetEffectiveWindWithSlope();
         }
 
         public void importWuiRastersByFileName(string wuiAreaFile)
         {
-            this.wuiAreaRaster = perilInputOutput.ReadRaster(wuiAreaFile);
+            wuiAreaRaster = perilInputOutput.ReadRaster(wuiAreaFile);
 
-            checkRasterSize(this.wuiAreaRaster);
+            checkRasterSize(wuiAreaRaster);
         }
 
         public void importTopographyRastersByFileName(string elevationFile)
         {
-            this.elevationRaster = perilInputOutput.ReadRaster(elevationFile);
+            elevationRaster = perilInputOutput.ReadRaster(elevationFile);
 
-            checkRasterSize(this.elevationRaster);
+            checkRasterSize(elevationRaster);
             interpolateSlope();
         }
 
         public void importTopographyRastersByFileName(string elevationFile, string slopeFile, string aspectFile)
         {
-            this.elevationRaster = perilInputOutput.ReadRaster(elevationFile);
-            this.slopeRaster = perilInputOutput.ReadRaster(slopeFile);
-            this.aspectRaster = perilInputOutput.ReadRaster(aspectFile);
+            elevationRaster = perilInputOutput.ReadRaster(elevationFile);
+            slopeRaster = perilInputOutput.ReadRaster(slopeFile);
+            aspectRaster = perilInputOutput.ReadRaster(aspectFile);
 
-            checkRasterSize(this.elevationRaster);
-            checkRasterSize(this.slopeRaster);
-            checkRasterSize(this.aspectRaster);
+            checkRasterSize(elevationRaster);
+            checkRasterSize(slopeRaster);
+            checkRasterSize(aspectRaster);
         }
 
         public void importFireRastersByVariable(float[,] rateOfSpreadMagnitude, float[,] rateOfSpreadDirection)
         {
-            this.rateOfSpreadMagnitudeRaster = rateOfSpreadMagnitude;
-            this.rateOfSpreadDirectionRaster = rateOfSpreadDirection;
+            rateOfSpreadMagnitudeRaster = rateOfSpreadMagnitude;
+            rateOfSpreadDirectionRaster = rateOfSpreadDirection;
 
-            totalX = this.rateOfSpreadMagnitudeRaster.GetLength(0);
-            totalY = this.rateOfSpreadMagnitudeRaster.GetLength(1);
+            totalX = rateOfSpreadMagnitudeRaster.GetLength(0);
+            totalY = rateOfSpreadMagnitudeRaster.GetLength(1);
 
-            checkRasterSize(this.rateOfSpreadDirectionRaster);
+            checkRasterSize(rateOfSpreadDirectionRaster);
         }
 
         public void importWeatherRastersByVariable(float[,] windMagnitude, float[,] windDirection)
         {
-            this.windMagnitudeRaster = windMagnitude;
-            this.windDirectionRaster = windDirection;
+            windMagnitudeRaster = windMagnitude;
+            windDirectionRaster = windDirection;
 
-            checkRasterSize(this.windMagnitudeRaster);
-            checkRasterSize(this.windDirectionRaster);
+            checkRasterSize(windMagnitudeRaster);
+            checkRasterSize(windDirectionRaster);
 
             GetEffectiveWindWithSlope();
         }
 
         public void importTopographyRastersByVariable(float[,] elevation)
         {
-            this.elevationRaster = elevation;
+            elevationRaster = elevation;
 
-            checkRasterSize(this.elevationRaster);
+            checkRasterSize(elevationRaster);
 
             interpolateSlope();
         }
 
         public void importWuiRastersByVariable(float[,] wuiArea)
         {
-            this.wuiAreaRaster = wuiArea;
+            wuiAreaRaster = wuiArea;
 
-            checkRasterSize(this.wuiAreaRaster);
+            checkRasterSize(wuiAreaRaster);
         }
 
         public void importTopographyRastersByFileName(float[,] elevation, float[,] slope, float[,] aspect)
         {
-            this.elevationRaster = elevation;
-            this.slopeRaster = slope;
-            this.aspectRaster = aspect;
+            elevationRaster = elevation;
+            slopeRaster = slope;
+            aspectRaster = aspect;
 
-            checkRasterSize(this.elevationRaster);
-            checkRasterSize(this.slopeRaster);
-            checkRasterSize(this.aspectRaster);
+            checkRasterSize(elevationRaster);
+            checkRasterSize(slopeRaster);
+            checkRasterSize(aspectRaster);
         }
         public void rasteriseWindFromScalars(float windMagnitude, float windDirection)
         {
-            this.windMagnitudeRaster = new float[this.totalX,this.totalY];
-            this.windDirectionRaster = new float[this.totalX,this.totalY];
+            windMagnitudeRaster = new float[totalX, totalY];
+            windDirectionRaster = new float[totalX, totalY];
 
             for (int i = 0; i < totalX; i++)
             {
                 for (int j = 0; j < totalY; j++)
                 {
-                    this.windMagnitudeRaster[i,j] = windMagnitude;
-                    this.windDirectionRaster[i,j] = windDirection;
+                    windMagnitudeRaster[i,j] = windMagnitude;
+                    windDirectionRaster[i,j] = windDirection;
                 }
             }
             GetEffectiveWindWithSlope();
         }
         private void checkRasterSize(float[,] raster)
         {
-            if (raster.GetLength(0) != this.totalX || raster.GetLength(1) != this.totalY) throw new Exception($"Error: raster size mismatch");
+            if (raster.GetLength(0) != totalX || raster.GetLength(1) != totalY) throw new Exception($"Error: raster size mismatch");
         }
 
         //todo: verify all raster values have been imported.
@@ -148,8 +150,8 @@ namespace kperil
                 throw new InvalidOperationException("Elevation raster must be loaded before calling interpolateSlope().");
             }
 
-            slopeRaster = new float[this.totalX,this.totalY];
-            aspectRaster = new float[this.totalX,this.totalY];
+            slopeRaster = new float[totalX, totalY];
+            aspectRaster = new float[totalX, totalY];
 
             const float toDegrees = 180f / (float)Math.PI;
 
@@ -176,8 +178,8 @@ namespace kperil
                     float z8 = SampleElevation(x + 1, y);
                     float z9 = SampleElevation(x + 1, y + 1);
 
-                    float dzdx = ((z3 + 2f * z6 + z9) - (z1 + 2f * z4 + z7)) / (8f * cellSize);
-                    float dzdy = ((z7 + 2f * z8 + z9) - (z1 + 2f * z2 + z3)) / (8f * cellSize);
+                    float dzdx = (z3 + 2f * z6 + z9 - (z1 + 2f * z4 + z7)) / (8f * cellSize);
+                    float dzdy = (z7 + 2f * z8 + z9 - (z1 + 2f * z2 + z3)) / (8f * cellSize);
 
                     double gradient = Math.Sqrt(dzdx * dzdx + dzdy * dzdy);
                     slopeRaster[x,y] = (float)(Math.Atan(gradient) * radToDeg);
@@ -201,7 +203,7 @@ namespace kperil
 
         private void GetEffectiveWindWithSlope()
         {
-            float[,] effectiveMidflameWindspeed = new float [this.totalX,this.totalY];
+            float[,] effectiveMidflameWindspeed = new float [totalX, totalY];
 
             for (int i = 0; i < totalX; i++)
             {

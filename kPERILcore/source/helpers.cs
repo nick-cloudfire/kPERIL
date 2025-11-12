@@ -1,4 +1,6 @@
-namespace kperil
+using System;
+
+namespace kPERIL
 {
     class Helpers
     {
