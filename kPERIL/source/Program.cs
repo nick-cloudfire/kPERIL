@@ -13,7 +13,7 @@ namespace kPERIL {
 
             kPERIL kPERIL = new kPERIL();
 
-            float aset = 8;
+            float rset = 8;
 
             string mainFolder = @"D:\nPERIL\kPERIL\kPERIL\files\";
 
@@ -24,7 +24,7 @@ namespace kPERIL {
              
             var brokenDownROS = kPERIL.breakdownRateOfSpread();
             var travelTime = kPERIL.getTravelTimeFromBrokenDownRos(brokenDownROS);
-            var result = kPERIL.getTriggerBoundary(travelTime, aset);
+            var result = kPERIL.getTriggerBoundary(travelTime, rset);
 
             perilInputOutput.WriteRasterByCopy(result, mainFolder + "elevation.asc", mainFolder + "output.asc");
         }

@@ -209,7 +209,7 @@ namespace kPERIL
         }
 
 
-        public float[,] getTriggerBoundary(DirectionMagnitudes[,] travelTimeToNextCell, float aset)
+        public float[,] getTriggerBoundary(DirectionMagnitudes[,] travelTimeToNextCell, float rset)
         {
             float[,] triggerBoundary = new float[perilData.totalX,perilData.totalY];
             float[,] wuiArea = wuiAreaAdjusted();
@@ -220,7 +220,7 @@ namespace kPERIL
                 {
                     if (wuiArea[x,y] == 1)
                     {
-                        var singleCellTriggerBoundary = breadthFirstSearchSingleCell(x, y, aset, travelTimeToNextCell);
+                        var singleCellTriggerBoundary = breadthFirstSearchSingleCell(x, y, rset, travelTimeToNextCell);
                         for (int xb = 0; xb < perilData.totalX; xb++)
                         {
                             for (int yb = 0; yb < perilData.totalY; yb++)
