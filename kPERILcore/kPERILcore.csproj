@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- k-PERIL's algorithm on its own: the rate-of-spread breakdown, the travel-time graph and the trigger-boundary
+       search, on rasters handed in as arrays. No file I/O and no GDAL, so it can be consumed by anything that can
+       load a netstandard2.1 assembly - the WUInity/PREACT engine and its Unity visualizer (Mono) among them.
+       Reading and writing ASCII grids and GeoTIFFs is kPERILdll's job, which references this project.
+       netstandard2.1 lacks PriorityQueue<,>, provided by source/PriorityQueueShim.cs. -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- annotations: the source uses ? annotations (CS8632 under disable) but was never written against
+         nullable flow analysis. -->
+    <Nullable>annotations</Nullable>
+    <!-- The latest C# the SDK has: language features compile to netstandard2.1 IL that Unity's Mono runs; only
+         runtime types missing from netstandard2.1 need a shim (PriorityQueue<,>, IsExternalInit). -->
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>kPERIL</RootNamespace>
+    <AssemblyName>kPERILcore</AssemblyName>
+    <!-- Warnings are errors, so the build stays warning-free. NuGet's own warnings (NU1xxx) stay warnings: they
+         describe the restore on the machine at hand (versions resolved, feeds reachable, online advisories), not
+         this code. -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1500;NU1501;NU1502;NU1503;NU1504;NU1505;NU1506;NU1507;NU1508;NU1510;NU1511;NU1601;NU1602;NU1603;NU1604;NU1605;NU1608;NU1609;NU1701;NU1702;NU1703;NU1801;NU1802;NU1803;NU1900;NU1901;NU1902;NU1903;NU1904;NU1905</WarningsNotAsErrors>
+  </PropertyGroup>
+
+</Project>

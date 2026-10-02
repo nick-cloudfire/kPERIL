@@ -6,6 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <!-- The algorithm (kPERILcore, netstandard2.1, no GDAL); this project adds reading and writing rasters as ASCII
+       grids and, through GDAL, GeoTIFFs (source/io.cs, source/perilDataFiles.cs). -->
+  <ItemGroup>
+    <ProjectReference Include="..\kPERILcore\kPERILcore.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="GDAL" Version="3.11.3" />
     <PackageReference Include="GDAL.Native" Version="3.11.3" />

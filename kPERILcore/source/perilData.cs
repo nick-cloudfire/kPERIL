@@ -18,60 +18,6 @@ namespace kperil
         public int totalX;
         public int totalY;
 
-        public void importFireRastersByFileName(string rateOfSpreadMagnitudeFile, string rateOfSpreadDirectionFile)
-        {
-            this.rateOfSpreadMagnitudeRaster = perilInputOutput.ReadRaster(rateOfSpreadMagnitudeFile);
-            this.rateOfSpreadDirectionRaster = perilInputOutput.ReadRaster(rateOfSpreadDirectionFile);
-
-            totalX = this.rateOfSpreadMagnitudeRaster.GetLength(0);
-            totalY = this.rateOfSpreadMagnitudeRaster.GetLength(1);
-
-            checkRasterSize(this.rateOfSpreadDirectionRaster);
-
-            var metadata = perilInputOutput.GetRasterMetadata(rateOfSpreadMagnitudeFile);
-            cellSize = metadata.CellSize;
-            noDataValue = metadata.NoDataValue;
-            xllCorner = metadata.XllCorner;
-            yllCorner = metadata.YllCorner;
-        }
-
-        public void importWeatherRastersByFileName(string windMagnitudeFile, string windDirectionFile)
-        {
-            this.windMagnitudeRaster = perilInputOutput.ReadRaster(windMagnitudeFile);
-            this.windDirectionRaster = perilInputOutput.ReadRaster(windDirectionFile);
-
-            checkRasterSize(this.windMagnitudeRaster);
-            checkRasterSize(this.windDirectionRaster);
-
-            GetEffectiveWindWithSlope();
-        }
-
-        public void importWuiRastersByFileName(string wuiAreaFile)
-        {
-            this.wuiAreaRaster = perilInputOutput.ReadRaster(wuiAreaFile);
-
-            checkRasterSize(this.wuiAreaRaster);
-        }
-
-        public void importTopographyRastersByFileName(string elevationFile)
-        {
-            this.elevationRaster = perilInputOutput.ReadRaster(elevationFile);
-
-            checkRasterSize(this.elevationRaster);
-            interpolateSlope();
-        }
-
-        public void importTopographyRastersByFileName(string elevationFile, string slopeFile, string aspectFile)
-        {
-            this.elevationRaster = perilInputOutput.ReadRaster(elevationFile);
-            this.slopeRaster = perilInputOutput.ReadRaster(slopeFile);
-            this.aspectRaster = perilInputOutput.ReadRaster(aspectFile);
-
-            checkRasterSize(this.elevationRaster);
-            checkRasterSize(this.slopeRaster);
-            checkRasterSize(this.aspectRaster);
-        }
-
         public void importFireRastersByVariable(float[,] rateOfSpreadMagnitude, float[,] rateOfSpreadDirection)
         {
             this.rateOfSpreadMagnitudeRaster = rateOfSpreadMagnitude;
@@ -110,7 +56,11 @@ namespace kperil
             checkRasterSize(this.wuiAreaRaster);
         }
 
-        public void importTopographyRastersByFileName(float[,] elevation, float[,] slope, float[,] aspect)
+        /// <summary>
+        /// Elevation with its slope (degrees) and aspect (degrees, compass bearing of the downhill direction, 0 =
+        /// north, clockwise - as GDAL's gdaldem, ELMFIRE's asp raster and LANDFIRE write it).
+        /// </summary>
+        public void importTopographyRastersByVariable(float[,] elevation, float[,] slope, float[,] aspect)
         {
             this.elevationRaster = elevation;
             this.slopeRaster = slope;
@@ -120,6 +70,14 @@ namespace kperil
             checkRasterSize(this.slopeRaster);
             checkRasterSize(this.aspectRaster);
         }
+
+        /// <summary>The same as <see cref="importTopographyRastersByVariable(float[,], float[,], float[,])"/>; the
+        /// name it had before the file-reading overloads moved to kPERILdll, kept for existing callers.</summary>
+        public void importTopographyRastersByFileName(float[,] elevation, float[,] slope, float[,] aspect)
+        {
+            importTopographyRastersByVariable(elevation, slope, aspect);
+        }
+
         public void rasteriseWindFromScalars(float windMagnitude, float windDirection)
         {
             this.windMagnitudeRaster = new float[this.totalX,this.totalY];
@@ -150,8 +108,6 @@ namespace kperil
 
             slopeRaster = new float[this.totalX,this.totalY];
             aspectRaster = new float[this.totalX,this.totalY];
-
-            const float toDegrees = 180f / (float)Math.PI;
 
             const float radToDeg = 180f / (float)Math.PI;
 
