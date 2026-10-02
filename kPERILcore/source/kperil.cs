@@ -7,6 +7,15 @@ namespace kPERIL
     {
         public perilData perilData;
 
+        /// <summary>ELMFIRE's default cap on the spread ellipse's length-to-breadth ratio (its MAX_LOW).</summary>
+        public const float DefaultMaxLengthToBreadth = 8f;
+
+        /// <summary>
+        /// The cap on each cell's length-to-breadth ratio (see <see cref="LengthToBreadth"/>). A caller whose fire
+        /// came from ELMFIRE should set the namelist's MAX_LOW here, so the boundary's ellipse is the fire's.
+        /// </summary>
+        public float MaxLengthToBreadth = DefaultMaxLengthToBreadth;
+
         public kPERIL()
         {
             this.perilData = new perilData();
@@ -39,7 +48,7 @@ namespace kPERIL
                     float[] directions = new float[8];
                     if (perilData.rateOfSpreadMagnitudeRaster[x,y] >= 0 && perilData.rateOfSpreadMagnitudeRaster[x,y] != perilData.noDataValue)
                     {
-                        double lb = 0.936 * Math.Exp(0.2566 * perilData.effectiveMidflameWindspeed[x,y]) + 0.461 * Math.Exp(-0.1548 * perilData.effectiveMidflameWindspeed[x,y]) - 0.397; //Calculate length to Breadth ratio of Huygens ellipse
+                        double lb = LengthToBreadth(perilData.effectiveMidflameWindspeed[x,y], MaxLengthToBreadth); //length to breadth ratio of the Huygens ellipse
                         double hb = (lb + (float)Math.Sqrt(lb * lb - 1)) / (lb - (float)Math.Sqrt(lb * lb - 1));    //calculate head to back ratio
 
                         a = perilData.rateOfSpreadMagnitudeRaster[x,y] / (2 * (float)lb) * (1 + 1 / (float)hb);
@@ -64,6 +73,25 @@ namespace kPERIL
                 }
             }
             return brokenDownRateOfSpread;
+        }
+
+        /// <summary>
+        /// The length-to-breadth ratio of the spread ellipse for an effective midflame wind <paramref name="midflameMph"/>
+        /// in mi/h, in the form ELMFIRE uses (elmfire_level_set.f90, C%LOW):
+        /// 0.936 e^(0.1147 U) + 0.461 e^(-0.0692 U) - 0.397, capped at <paramref name="max"/> and never below 1.
+        /// </summary>
+        /// <remarks>
+        /// The coefficients are Anderson's (1983) 0.2566 and 0.1548 per m/s expressed per mi/h (x 0.44704). They used
+        /// to be applied to mi/h as they stand, which makes every ellipse far longer than the fire's own - L/B 2.62
+        /// where the fire spread with 1.47 at 4.2 mi/h - so the boundary's flank and backing rates were not the
+        /// fire's. The floor of 1 keeps the head-to-back ratio real when rounding puts the calm-wind value a hair
+        /// below 1.
+        /// </remarks>
+        public static double LengthToBreadth(double midflameMph, double max = DefaultMaxLengthToBreadth)
+        {
+            double lb = 0.936 * Math.Exp(0.1147 * midflameMph) + 0.461 * Math.Exp(-0.0692 * midflameMph) - 0.397;
+            if (lb > max) lb = max;
+            return lb < 1.0 ? 1.0 : lb;
         }
 
         /// <summary>

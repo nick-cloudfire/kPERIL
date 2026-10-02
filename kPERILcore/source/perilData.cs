@@ -144,17 +144,36 @@ namespace kperil
                         continue;
                     }
 
-                    double aspectRadians = Math.Atan2(dzdy, -dzdx);
-                    if (aspectRadians < 0)
+                    //The downhill direction as a compass bearing (0 = north, clockwise), the convention of a
+                    //supplied aspect raster (gdaldem, ELMFIRE's asp, LANDFIRE) and of the wind direction.
+                    //Atan2(dzdy, -dzdx) - x being the row from the top, so dzdy is the rise southward and
+                    //dzdx the rise eastward - is the downhill direction's angle counter-clockwise from east;
+                    //it used to be stored as it was, so a slope falling south read 270 instead of 180.
+                    double aspectDegrees = 90.0 - Math.Atan2(dzdy, -dzdx) * radToDeg;
+                    if (aspectDegrees < 0)
                     {
-                        aspectRadians += 2 * Math.PI;
+                        aspectDegrees += 360.0;
+                    }
+                    if (aspectDegrees >= 360.0)
+                    {
+                        aspectDegrees -= 360.0;
                     }
 
-                    aspectRaster[x,y] = (float)(aspectRadians * radToDeg);
+                    aspectRaster[x,y] = (float)aspectDegrees;
                 }
             }
         }
 
+        /// <summary>
+        /// The effective midflame wind of each cell: the wind and 0.06 x the slope (degrees) as vectors in the
+        /// direction each pushes the fire, added.
+        /// </summary>
+        /// <remarks>
+        /// Both vectors point where they push: the wind towards its 'from' direction + 180, the slope upslope,
+        /// aspect (the downhill bearing) + 180. The wind used to go in towards its 'from' direction while the
+        /// slope pointed upslope, so an upslope wind and the slope subtracted (4.23 and 1.2 mi/h on a 20 degree
+        /// slope gave 3.03 where 5.43 is meant) and a downslope wind added.
+        /// </remarks>
         private void GetEffectiveWindWithSlope()
         {
             float[,] effectiveMidflameWindspeed = new float [this.totalX,this.totalY];
@@ -165,12 +184,12 @@ namespace kperil
                 {
                     double effectiveSlopeWind = 0.06f * slopeRaster[i,j];
 
-                    // Convert degrees to radians
-                    double radWindDir = windDirectionRaster[i,j] * Math.PI / 180.0;
+                    // Where the wind pushes the fire: away from where it blows from.
+                    double radWindTowards = (windDirectionRaster[i,j] + 180) * Math.PI / 180.0;
 
                     // Convert polar coordinates to Cartesian (x, y)
-                    double x2 = windMagnitudeRaster[i,j] * Math.Cos(radWindDir);
-                    double y2 = windMagnitudeRaster[i,j] * Math.Sin(radWindDir);
+                    double x2 = windMagnitudeRaster[i,j] * Math.Cos(radWindTowards);
+                    double y2 = windMagnitudeRaster[i,j] * Math.Sin(radWindTowards);
 
                     double radSlopeUpDir = (aspectRaster[i,j] + 180) * Math.PI / 180.0;
                     double x1 = effectiveSlopeWind * Math.Cos(radSlopeUpDir);

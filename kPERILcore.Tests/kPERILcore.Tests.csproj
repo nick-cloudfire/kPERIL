@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Checks of kPERILcore against hand-derived numbers, as a plain console program (no test framework needed):
+         dotnet run, in this folder
+       Exit code 0 = every check passed. Synthetic rasters only, so it needs neither GDAL nor data files. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>kPERIL.Tests</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1603;NU1605;NU1701;NU1801;NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\kPERILcore\kPERILcore.csproj" />
+  </ItemGroup>
+
+</Project>
